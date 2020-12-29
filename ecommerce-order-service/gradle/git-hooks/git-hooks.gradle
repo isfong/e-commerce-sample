@@ -1,0 +1,12 @@
+
+task installGitHooks(type: Copy) {
+    //noinspection GroovyAssignabilityCheck
+    from new File(rootProject.rootDir, 'gradle/git-hooks/pre-push')
+    into {
+        //noinspection GroovyAssignabilityCheck
+        new File(rootProject.rootDir, '.git/hooks')
+    }
+    fileMode 0755
+}
+
+compileJava.dependsOn installGitHooks
